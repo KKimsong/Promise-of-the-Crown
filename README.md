@@ -34,9 +34,6 @@ Godot Engine
 ### Gameplay
 ![Gameplay](screenshots/gameplay.png)
 
-*(All screenshots are taken from the in-game build)*![Uploading Screenshot 2026-02-02 at 6.07.41 in the evening.png…]()
-
-
 ---
 
 ## 📺 YouTube Gameplay Video
