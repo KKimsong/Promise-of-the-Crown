@@ -29,10 +29,14 @@ Godot Engine
 
 ### Main Menu
 ![Main Menu](screenshots/menu.png)
+<img width="697" height="388" alt="Screenshot 2026-02-02 at 6 07 41 in the evening" src="https://github.com/user-attachments/assets/9e01836e-9303-4aba-9bbd-0d3ee160c938" />
+
 
 
 ### Gameplay
 ![Gameplay](screenshots/gameplay.png)
+<img width="694" height="328" alt="Screenshot 2026-02-02 at 6 07 47 in the evening" src="https://github.com/user-attachments/assets/20530182-a5f0-4aa3-997e-1fafc8bf9fd1" />
+
 
 ---
 
