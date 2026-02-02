@@ -51,10 +51,19 @@ This project is released as an **Alpha Version (v0.1-alpha)**.
 - Playable character with movement and jumping
 - Platform-based level design
 - Fantasy forest environment
+### Reference:
+
+https://ozzbit-games.itch.io/fantasy-character(character)
+https://www.youtube.com/watch?v=zHYkcJyE52g(MAIN MENU)
 
 ### Notes:
 This is an early-stage version of the game.  
 Some features may be incomplete, and bugs may be present.
+
+### AI:Chatgpt
+"Explain how gravity and velocity work in CharacterBody2D"
+"Why does my character keep falling through platforms in Godot?"
+"How to structure a README.md for a game development project"
 
 ---
 
