@@ -40,7 +40,7 @@ Godot Engine
 
 ## 📺 YouTube Gameplay Video
 Watch the gameplay here:  
-👉(https://youtu.be/43Ak1kpNTRQ)
+(https://youtu.be/43Ak1kpNTRQ)
 ---
 
 ## Alpha Release Information
@@ -68,4 +68,4 @@ Some features may be incomplete, and bugs may be present.
 ---
 
 ## Project Status
-🟡 **Alpha Release** – Core gameplay mechanics implemented
+**Alpha Release** – Core gameplay mechanics implemented
