@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://clv68wvghunnk"
-path="res://.godot/imported/Screenshot 2026-02-02 at 4.28.27 in the afternoon.png-757b4aa2db3060f6cfb5f561e69d8ad5.ctex"
+uid="uid://ddwhrsjprev7l"
+path="res://.godot/imported/mainlev_build.png-5c0e98210896e7b836e4c6ea06b55ab9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://asset/Screenshot 2026-02-02 at 4.28.27 in the afternoon.png"
-dest_files=["res://.godot/imported/Screenshot 2026-02-02 at 4.28.27 in the afternoon.png-757b4aa2db3060f6cfb5f561e69d8ad5.ctex"]
+source_file="res://asset/Background/Level 2/PixelFantasy_Caves_1.0/mainlev_build.png"
+dest_files=["res://.godot/imported/mainlev_build.png-5c0e98210896e7b836e4c6ea06b55ab9.ctex"]
 
 [params]
 

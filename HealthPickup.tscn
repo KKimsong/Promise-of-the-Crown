@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://mp3k2j0o0res"]
+
+[ext_resource type="Script" uid="uid://3rg7s7amlp1b" path="res://health_pickup.gd" id="1_lj2ej"]
+[ext_resource type="Texture2D" uid="uid://xwlag7x2lhjq" path="res://asset/Item/heart.png" id="2_krg1p"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iyj80"]
+size = Vector2(148.5, 146.5)
+
+[node name="HealthPickup" type="Area2D"]
+z_index = 10
+y_sort_enabled = true
+collision_mask = 2
+script = ExtResource("1_lj2ej")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(75, 68)
+texture = ExtResource("2_krg1p")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(74.75, 71.75)
+shape = SubResource("RectangleShape2D_iyj80")
+debug_color = Color(0.71573263, 0.25676706, 0.99999994, 0.41960785)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
