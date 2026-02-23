@@ -69,3 +69,55 @@ Some features may be incomplete, and bugs may be present.
 
 ## Project Status
 **Alpha Release** – Core gameplay mechanics implemented
+
+## Beta version
+
+### New Features
+- Improved player movement and controls
+- Enhanced enemy behavior
+- Improved level design
+- Bug fixes from Alpha release
+
+## Beta Gameplay Video
+
+Watch the Beta gameplay here:  
+👉 https://your-youtube-link-here
+
+
+Available formats:
+- macOS (.zip containing .app)
+- Windows (.zip containing .exe)
+
+## Beta Testing
+
+The Beta version was tested by:
+- 3 Computer Science Seniors
+- 2 Non-Computer Science Seniors
+
+Feedback was collected using a Google Form and analyzed in a spreadsheet.
+
+## Beta Testing Evaluation
+
+You can view the results here:
+- Google Form: https://forms.gle/Uyk1EBWxtGqfiJyEA
+- Spreadsheet Results: (https://docs.google.com/spreadsheets/d/11xn47Giy8TKe-uyBXEoRc_GZGhh_orUhw-qsRAiSdyw/edit?usp=sharing)
+
+
+## Built With
+
+- Godot Engine 4.x
+- GDScript
+
+## AI Usage Disclosure
+
+AI tools (ChatGPT) were used to assist in:
+ChatGPT was used for minor assistance such as debugging support, documentation writing, and organizing project materials.
+
+## Future Improvements
+
+- Additional levels
+- More enemy types
+- Improved animations
+- Save system implementation
+- UI polish and sound refinement
+- Added sound effects and background music
