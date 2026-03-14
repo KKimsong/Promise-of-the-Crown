@@ -81,7 +81,7 @@ Some features may be incomplete, and bugs may be present.
 ## Beta Gameplay Video
 
 Watch the Beta gameplay here:  
-👉 https://your-youtube-link-here
+ https://your-youtube-link-here
 
 
 Available formats:
@@ -121,3 +121,78 @@ ChatGPT was used for minor assistance such as debugging support, documentation w
 - Save system implementation
 - UI polish and sound refinement
 - Added sound effects and background music
+
+## Fianl version
+
+## Promise of the Crown
+## Game Description
+Promise of the Crown is a 2D fantasy platformer adventure game where the player embarks on a journey through a mystical forest to fulfill a royal promise.
+Players explore hand-crafted environments, navigate platform-based obstacles, and progress through atmospheric levels while uncovering the path toward their objective.
+The game focuses on exploration, smooth platforming mechanics, and immersive fantasy environments.
+
+## Genre
+2D Platformer / Adventure / Fantasy
+
+## Engine and Technology
+Game Engine: Godot Engine 4.x
+Programming Language: GDScript
+Version Control: GitHub
+Controls
+Key
+Action
+A / D
+Move left and right
+Space
+Jump
+J fight
+
+
+
+## Gameplay Video
+Watch the gameplay video here:
+[https://youtu.be/43Ak1kpNTRQ](https://youtu.be/0CAZFf5_IOQ)
+## Final Release Features
+Interactive main menu system
+Playable character movement and jumping mechanics
+Platform-based level design
+Fantasy forest themed environment
+Improved player movement and responsiveness
+Refined level layout and platform placement
+Gameplay stability improvements and bug fixes
+
+## Available Builds
+The game is available for:
+Windows (.zip containing .exe)
+## User Testing
+The game was tested by a group of students including:
+3 Computer Science seniors
+2 Non-Computer Science seniors
+Testing feedback was collected through a Google Form and analyzed using a spreadsheet.
+## References
+Character Asset
+https://ozzbit-games.itch.io/fantasy-character
+Main Menu Tutorial
+https://www.youtube.com/watch?v=zHYkcJyE52g
+
+## AI Usage Disclosure
+AI tools such as ChatGPT were used for limited development assistance including:
+Debugging and troubleshooting
+Documentation writing
+Organizing project information
+Example prompts included:
+“Explain how gravity and velocity work in CharacterBody2D”
+“Why does my character fall through platforms in Godot”
+“How to structure a README.md for a game development project”
+## Project Status
+Final Release – Completed Version
+The core gameplay mechanics, level design, and user experience have been implemented and tested.
+Possible Future Improvements
+Although the project has reached its final release stage, potential improvements include:
+Additional levels
+New enemy types
+Enhanced character animations
+Save/load system
+Improved UI and sound design
+Additional background music and sound effects
+
+
