@@ -1,10 +1,12 @@
-[gd_scene load_steps=39 format=3 uid="uid://cxtiim7gblhx0"]
+[gd_scene load_steps=41 format=3 uid="uid://cxtiim7gblhx0"]
 
-[ext_resource type="Script" uid="uid://ci2oiy2f6262j" path="res://bot.gd" id="1_b4m77"]
+[ext_resource type="Script" uid="uid://keogjis6otap" path="res://bot_2.gd" id="1_b4m77"]
 [ext_resource type="Texture2D" uid="uid://dsyc8tapxnrst" path="res://asset/Bot/Skeletons_Free_Pack/Skeleton_Sword/Skeleton_Yellow/Skeleton_With_VFX/Skeleton_01_Yellow_Attack1.png" id="2_b4m77"]
 [ext_resource type="Texture2D" uid="uid://ftm7tujbwb6p" path="res://asset/Bot/Skeletons_Free_Pack/Skeleton_Sword/Skeleton_Yellow/Skeleton_With_VFX/Skeleton_01_Yellow_Die.png" id="3_ej23p"]
 [ext_resource type="Texture2D" uid="uid://dubkmd035bmvc" path="res://asset/Bot/Skeletons_Free_Pack/Skeleton_Sword/Skeleton_Yellow/Skeleton_With_VFX/Skeleton_01_Yellow_Idle.png" id="4_xk2t6"]
 [ext_resource type="Texture2D" uid="uid://br7nowsmcf7y4" path="res://asset/Bot/Skeletons_Free_Pack/Skeleton_Sword/Skeleton_Yellow/Skeleton_With_VFX/Skeleton_01_Yellow_Walk.png" id="5_2kd3f"]
+[ext_resource type="AudioStream" uid="uid://dqu547h76sbwl" path="res://asset/Sound/Bot_Die.ogg" id="6_ej23p"]
+[ext_resource type="AudioStream" uid="uid://cjxlkax2u3etb" path="res://asset/Sound/Bot_attack.ogg" id="7_xk2t6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ng255"]
 atlas = ExtResource("2_b4m77")
@@ -157,7 +159,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"Attack",
-"speed": 12.0
+"speed": 6.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -233,28 +235,28 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jgycm"]
-size = Vector2(48, 31)
+size = Vector2(33, 53)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_58dd5"]
-size = Vector2(188.625, 77.25)
+size = Vector2(64, 53.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jtncq"]
-size = Vector2(39, 31)
+size = Vector2(46, 50)
 
-[node name="Bot" type="CharacterBody2D"]
+[node name="Bot2" type="CharacterBody2D"]
 collision_layer = 4
 platform_floor_layers = 4294967041
 script = ExtResource("1_b4m77")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(30.662792, 18)
-scale = Vector2(0.75702524, 0.71875)
+position = Vector2(71, 33)
+scale = Vector2(0.930596, 1.15625)
 sprite_frames = SubResource("SpriteFrames_yty76")
 animation = &"Attack"
 frame_progress = 0.6880052
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(32, 24.5)
+position = Vector2(69, 43)
 shape = SubResource("RectangleShape2D_jgycm")
 debug_color = Color(0.6925677, 0.4970358, 3.85046e-07, 0.41960785)
 
@@ -263,7 +265,7 @@ collision_layer = 4
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectArea"]
-position = Vector2(30, 24)
+position = Vector2(69, 42.75)
 shape = SubResource("RectangleShape2D_58dd5")
 
 [node name="AttackArea" type="Area2D" parent="."]
@@ -272,8 +274,15 @@ collision_layer = 4
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
-position = Vector2(29, 24)
+position = Vector2(68, 43)
 shape = SubResource("RectangleShape2D_jtncq")
+
+[node name="Die" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_ej23p")
+bus = &"Bot_die"
+
+[node name="Attack" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_xk2t6")
 
 [connection signal="body_entered" from="DetectArea" to="." method="_on_detect_area_body_entered"]
 [connection signal="body_exited" from="DetectArea" to="." method="_on_detect_area_body_exited"]

@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://bcb0cusruprkg"]
+
+[node name="Ending" type="Node2D"]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 460.0
+offset_top = 276.0
+offset_right = 682.0
+offset_bottom = 367.0
+text = "THE END
+Thank you for playing
+Promise of the Crown 👑"

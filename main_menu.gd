@@ -1,5 +1,7 @@
 extends Control
 
+@onready var sound: AudioStreamPlayer2D = $sound
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -13,7 +15,8 @@ func _process(delta: float) -> void:
 
 func _on_start_pressed() -> void:
 	get_tree().change_scene_to_file("res://world.tscn")
-
+	sound.pitch_scale = randf_range(0.3, 0.7)
+	sound.play()
 func _on_Option_2_pressed() -> void:
 	print("Setting pressed")
 

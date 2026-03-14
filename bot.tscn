@@ -1,10 +1,12 @@
-[gd_scene load_steps=53 format=3 uid="uid://bijvb6r3rf6oi"]
+[gd_scene load_steps=55 format=3 uid="uid://bijvb6r3rf6oi"]
 
 [ext_resource type="Texture2D" uid="uid://bo4ers3qkggxe" path="res://asset/Bot/Sprite Sheets/Skeleton Idle.png" id="1_5unqy"]
 [ext_resource type="Script" uid="uid://ci2oiy2f6262j" path="res://bot.gd" id="1_58dd5"]
 [ext_resource type="Texture2D" uid="uid://hacf03a46k1p" path="res://asset/Bot/Sprite Sheets/Skeleton Dead.png" id="2_58dd5"]
 [ext_resource type="Texture2D" uid="uid://m5hot1ap3xrg" path="res://asset/Bot/Sprite Sheets/Skeleton Walk.png" id="2_abwpn"]
 [ext_resource type="Texture2D" uid="uid://cec2v3hv3sook" path="res://asset/Bot/Sprite Sheets/Skeleton Attack.png" id="3_58dd5"]
+[ext_resource type="AudioStream" uid="uid://dqu547h76sbwl" path="res://asset/Sound/Bot_Die.ogg" id="6_jtncq"]
+[ext_resource type="AudioStream" uid="uid://cjxlkax2u3etb" path="res://asset/Sound/Bot_attack.ogg" id="7_3sbvp"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ql3aw"]
 atlas = ExtResource("3_58dd5")
@@ -237,7 +239,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"Attack",
-"speed": 15.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -331,13 +333,13 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jgycm"]
-size = Vector2(48, 31)
+size = Vector2(24.5, 31)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_58dd5"]
-size = Vector2(134.3125, 70.625)
+size = Vector2(68, 31)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jtncq"]
-size = Vector2(39, 31)
+size = Vector2(36.5, 31)
 
 [node name="Bot" type="CharacterBody2D"]
 collision_layer = 4
@@ -345,14 +347,14 @@ platform_floor_layers = 4294967041
 script = ExtResource("1_58dd5")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(44, 27)
+position = Vector2(43, 29)
 scale = Vector2(1.0348837, 1)
 sprite_frames = SubResource("SpriteFrames_yty76")
 animation = &"Attack"
-frame_progress = 0.5451887
+frame_progress = 0.02879418
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(40, 27.5)
+position = Vector2(35.75, 34)
 shape = SubResource("RectangleShape2D_jgycm")
 debug_color = Color(0.6925677, 0.4970358, 3.85046e-07, 0.41960785)
 
@@ -361,7 +363,7 @@ collision_layer = 4
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectArea"]
-position = Vector2(40, 28)
+position = Vector2(33, 34)
 shape = SubResource("RectangleShape2D_58dd5")
 
 [node name="AttackArea" type="Area2D" parent="."]
@@ -370,8 +372,16 @@ collision_layer = 4
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
-position = Vector2(43.5, 27.5)
+position = Vector2(32, 34)
 shape = SubResource("RectangleShape2D_jtncq")
+
+[node name="Die" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_jtncq")
+bus = &"Bot_die"
+
+[node name="Attack" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_3sbvp")
+bus = &"Bot_attack"
 
 [connection signal="body_entered" from="DetectArea" to="." method="_on_detect_area_body_entered"]
 [connection signal="body_exited" from="DetectArea" to="." method="_on_detect_area_body_exited"]

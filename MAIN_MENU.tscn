@@ -1,48 +1,82 @@
-[gd_scene load_steps=4 format=3 uid="uid://c3ujbdjrahfqr"]
+[gd_scene load_steps=8 format=3 uid="uid://c3ujbdjrahfqr"]
 
 [ext_resource type="Script" uid="uid://n3opaic5s4hr" path="res://main_menu.gd" id="1_pdres"]
 [ext_resource type="Texture2D" uid="uid://dncjgc50hwvho" path="res://asset/MENU/Screenshot 2026-02-02 at 4.28.27 in the afternoon.png" id="1_uw1en"]
+[ext_resource type="AudioStream" uid="uid://dyon62r8sqvcy" path="res://asset/Sound/mainmenu.ogg" id="3_vuinv"]
+[ext_resource type="Texture2D" uid="uid://e1mrloinc8dr" path="res://asset/Item/A-Key.png" id="4_0qhmq"]
+[ext_resource type="Texture2D" uid="uid://sua2qlrj4p6t" path="res://asset/Item/D-Key.png" id="5_k5ux6"]
+[ext_resource type="Texture2D" uid="uid://d0h13dd3cpkkf" path="res://asset/Item/J-Key.png" id="7_ft14u"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pdres"]
 texture = ExtResource("1_uw1en")
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 2.0
-offset_right = 2.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -60.0
+offset_top = 11.0
+offset_right = -60.0
+offset_bottom = 11.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_pdres")
 
+[node name="Label" type="Label" parent="."]
+z_index = 11
+layout_mode = 0
+offset_left = 325.0
+offset_top = 907.0
+offset_right = 401.0
+offset_bottom = 930.0
+text = "backward"
+
+[node name="Label2" type="Label" parent="."]
+z_index = 11
+layout_mode = 0
+offset_left = 419.0
+offset_top = 908.0
+offset_right = 495.0
+offset_bottom = 931.0
+text = "Forward"
+
+[node name="Label3" type="Label" parent="."]
+z_index = 11
+layout_mode = 0
+offset_left = 252.0
+offset_top = 909.0
+offset_right = 328.0
+offset_bottom = 932.0
+text = "Fight"
+
+[node name="sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_vuinv")
+autoplay = true
+bus = &"Main-Menu"
+
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -801.0
-offset_top = -409.0
-offset_right = 708.0
-offset_bottom = 490.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_pdres")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
-anchors_preset = 5
+anchors_preset = 8
 anchor_left = 0.5
+anchor_top = 0.5
 anchor_right = 0.5
+anchor_bottom = 0.5
 offset_left = -164.75
+offset_top = -97.875
 offset_right = 164.75
-offset_bottom = 195.75
+offset_bottom = 97.875
 grow_horizontal = 2
+grow_vertical = 2
 theme_override_constants/separation = 9
 
 [node name="Button" type="Button" parent="VBoxContainer"]
@@ -60,6 +94,21 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 19
 text = "EXIT
 "
+
+[node name="AKey" type="Sprite2D" parent="."]
+position = Vector2(363.00003, 962)
+scale = Vector2(0.14355469, 0.123046696)
+texture = ExtResource("4_0qhmq")
+
+[node name="DKey" type="Sprite2D" parent="."]
+position = Vector2(451, 962)
+scale = Vector2(0.14453124, 0.123046756)
+texture = ExtResource("5_k5ux6")
+
+[node name="JKey" type="Sprite2D" parent="."]
+position = Vector2(269, 962.00006)
+scale = Vector2(0.13476563, 0.12109386)
+texture = ExtResource("7_ft14u")
 
 [connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="VBoxContainer/Button2" to="." method="_on_Option_2_pressed"]

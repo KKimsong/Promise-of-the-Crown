@@ -1,13 +1,14 @@
-[gd_scene load_steps=47 format=3 uid="uid://c0g2j6of17dq6"]
+[gd_scene load_steps=48 format=3 uid="uid://c0g2j6of17dq6"]
 
 [ext_resource type="Script" uid="uid://hivo802ggbm6" path="res://mushroom.gd" id="1_4gvq0"]
-[ext_resource type="Texture2D" uid="uid://bjikvyhlqen36" path="res://asset/Bot/Forest_Monsters_FREE/Mushroom/Mushroom with VFX/Mushroom-Die.png" id="2_5rjv2"]
-[ext_resource type="Texture2D" uid="uid://brk1pa5vq3kem" path="res://asset/Bot/Forest_Monsters_FREE/Mushroom/Mushroom with VFX/Mushroom-Idle.png" id="3_uxf4e"]
-[ext_resource type="Texture2D" uid="uid://cxewsgsxv6xhd" path="res://asset/Bot/Forest_Monsters_FREE/Mushroom/Mushroom with VFX/Mushroom-AttackWithStun.png" id="4_jokqs"]
-[ext_resource type="Texture2D" uid="uid://b583fwlvkr8ab" path="res://asset/Bot/Forest_Monsters_FREE/Mushroom/Mushroom with VFX/Mushroom-Run.png" id="5_6byal"]
+[ext_resource type="Texture2D" uid="uid://bjikvyhlqen36" path="res://asset/Bot/Small_bot/Mushroom/Mushroom with VFX/Mushroom-Die.png" id="2_5rjv2"]
+[ext_resource type="Texture2D" uid="uid://brk1pa5vq3kem" path="res://asset/Bot/Small_bot/Mushroom/Mushroom with VFX/Mushroom-Idle.png" id="3_uxf4e"]
+[ext_resource type="Texture2D" uid="uid://cxewsgsxv6xhd" path="res://asset/Bot/Small_bot/Mushroom/Mushroom with VFX/Mushroom-AttackWithStun.png" id="4_jokqs"]
+[ext_resource type="Texture2D" uid="uid://b583fwlvkr8ab" path="res://asset/Bot/Small_bot/Mushroom/Mushroom with VFX/Mushroom-Run.png" id="5_6byal"]
+[ext_resource type="AudioStream" uid="uid://by4v4dl4pvpe0" path="res://asset/Sound/Hurt.ogg" id="6_5rjv2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wr5pi"]
-size = Vector2(34, 37)
+size = Vector2(22, 33)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mbs7r"]
 atlas = ExtResource("2_5rjv2")
@@ -307,14 +308,13 @@ collision_mask = 2
 script = ExtResource("1_4gvq0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(23, 28.5)
+position = Vector2(22, 30.5)
 shape = SubResource("RectangleShape2D_wr5pi")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(23, 14)
 sprite_frames = SubResource("SpriteFrames_af1l2")
-animation = &"Walk"
-frame_progress = 0.907922
+animation = &"Die"
 
 [node name="DetectArea" type="Area2D" parent="."]
 collision_layer = 16
@@ -323,3 +323,6 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectArea"]
 position = Vector2(22.5, 29)
 shape = SubResource("RectangleShape2D_abm82")
+
+[node name="hurt" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_5rjv2")

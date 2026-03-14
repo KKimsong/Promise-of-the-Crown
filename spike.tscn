@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://bnmoy2esf2o0b"]
 
 [ext_resource type="Script" uid="uid://c8h44ddfxo7s8" path="res://spike.gd" id="1_7k7bx"]
-[ext_resource type="Texture2D" uid="uid://clgjix0udv2l8" path="res://asset/Background/Assets/Assets.png" id="2_tggh8"]
+[ext_resource type="Texture2D" uid="uid://dfwwe2ehqj43i" path="res://asset/Background/Level1/Assets.png" id="2_tggh8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5sso0"]
 

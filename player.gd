@@ -3,7 +3,7 @@ extends CharacterBody2D
 # ======================
 # MOVEMENT SETTINGS
 # ======================
-const SPEED := 300.0
+const SPEED := 200.0
 const JUMP_VELOCITY := -350.0
 const STOP_THRESHOLD := 5.0
 const IDLE_DELAY := 0.12
@@ -41,13 +41,19 @@ var jump_count := 0
 # ======================
 @onready var anim: AnimatedSprite2D = $AnimatedSprite2D
 @onready var attack_area: Area2D = $AttackArea
-
+@onready var invincible_timer: Timer = $InvincibleTimer
+@onready var jumpsound: AudioStreamPlayer2D = $Jumpsound
+@onready var fightsound: AudioStreamPlayer2D = $fightsound
+@onready var deathsound: AudioStreamPlayer2D = $deathsound
+@onready var hurt: AudioStreamPlayer2D = $hurt
 # ======================
 # STATE
 # ======================
 var idle_timer := 0.0
 var was_on_floor := false
 var needs_reinput := false
+var has_key = false
+
 
 # ======================
 # READY
@@ -56,7 +62,11 @@ func _ready():
 	add_to_group("player")
 	attack_area.monitoring = false
 
-	# ⭐ Restore saved health
+	# Setup timer
+	invincible_timer.wait_time = invincible_time
+	invincible_timer.one_shot = true
+	invincible_timer.timeout.connect(_on_invincible_timer_timeout)
+
 	if GameManager.player_health <= 0:
 		GameManager.player_health = max_health
 
@@ -71,7 +81,7 @@ func _ready():
 # ======================
 func _physics_process(delta):
 
-	if is_dead or is_hurt:
+	if is_dead:
 		apply_gravity(delta)
 		move_and_slide()
 		return
@@ -86,20 +96,20 @@ func _physics_process(delta):
 
 	apply_gravity(delta)
 
-	# -------- JUMP --------
+	# JUMP
 	if Input.is_action_just_pressed("ui_accept") and jump_count < max_jumps:
 		velocity.y = JUMP_VELOCITY
 		jump_count += 1
 		needs_reinput = true
 
-	# -------- ATTACK --------
+	# ATTACK
 	if Input.is_action_just_pressed("attack") and can_attack:
 		attack()
 		return
 
 	var direction := Input.get_axis("ui_left", "ui_right")
 
-	# -------- MOVEMENT --------
+	# MOVEMENT
 	if is_on_floor():
 		if needs_reinput:
 			if direction == 0:
@@ -131,23 +141,19 @@ func apply_gravity(delta):
 # ANIMATION
 # ======================
 func update_animation(direction, delta):
-	if is_hurt or is_dead or is_attacking:
+	if is_dead or is_attacking:
 		return
 
 	var on_floor := is_on_floor()
 	var stopped := absf(velocity.x) < STOP_THRESHOLD
 
-	if on_floor and not was_on_floor:
-		play_anim("Idle", anim.flip_h)
-		was_on_floor = true
-		return
-
 	if not on_floor:
 		if velocity.y < 0:
 			play_anim("jump", anim.flip_h)
+			jumpsound.pitch_scale = randf_range(0.95, 1.05)
+			jumpsound.play()
 		else:
 			play_anim("fall", anim.flip_h)
-		was_on_floor = false
 		return
 
 	if direction != 0:
@@ -183,41 +189,45 @@ func attack():
 
 	await get_tree().create_timer(attack_cooldown).timeout
 	can_attack = true
-
+	fightsound.pitch_scale = randf_range(0.95, 1.0)
+	fightsound.play()
 
 func _on_attack_area_body_entered(body):
 	if body.is_in_group("enemy") and body.has_method("take_damage"):
 		body.take_damage(attack_damage)
-
+	
 
 # ======================
 # DAMAGE
 # ======================
 func take_damage(amount: int):
-	if is_dead or not can_take_damage:
+	if is_dead:
 		return
 
-	can_take_damage = false
-	is_hurt = true
+	if not can_take_damage:
+		return
 
-	health = max(health - amount, 0)
+	hurt.pitch_scale = randf_range(0.9, 1.1)
+	hurt.play()
+	
+	can_take_damage = false
+	invincible_timer.start()
+
+	health -= amount
+	health = max(health, 0)
+
 	GameManager.player_health = health
 
 	print("Player HP:", health)
 	emit_signal("health_changed", health, max_health)
-
-	if anim.sprite_frames.has_animation("Hurt"):
-		anim.play("Hurt")
-
+	
 	if health <= 0:
 		die()
-		return
 
-	await get_tree().create_timer(invincible_time).timeout
 
-	is_hurt = false
+func _on_invincible_timer_timeout():
 	can_take_damage = true
-
+	
 
 # ======================
 # HEAL
@@ -231,7 +241,6 @@ func heal(amount: int):
 	GameManager.player_health = health
 
 	if health != old_health:
-		print("Player healed →", health)
 		emit_signal("health_changed", health, max_health)
 
 
@@ -246,21 +255,10 @@ func die():
 	velocity = Vector2.ZERO
 	set_physics_process(false)
 
-	print("PLAYER DIED")
-
 	if anim.sprite_frames.has_animation("Dead"):
 		anim.play("Dead")
+		deathsound.pitch_scale = randf_range(0.1, 0.7)
+		deathsound.play()
 
 	await get_tree().create_timer(0.8).timeout
 	get_tree().reload_current_scene()
-
-
-# ======================
-# OPTIONAL DOOR SIGNAL CLEANUP
-# ======================
-func _on_door_body_entered(_body: Node2D) -> void:
-	pass
-
-
-func _on_door_body_exited(_body: Node2D) -> void:
-	pass

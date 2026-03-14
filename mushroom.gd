@@ -13,6 +13,7 @@ var has_damaged_player := false
 
 @onready var anim := $AnimatedSprite2D
 @onready var detect_area := $DetectArea
+@onready var hurt: AudioStreamPlayer2D = $hurt
 
 func _ready():
 	add_to_group("enemy")
@@ -60,6 +61,9 @@ func stun():
 	is_stunned = true
 	velocity = Vector2.ZERO
 	anim.play("Stun")
+	hurt.pitch_scale = randf_range(0.3, 0.7)
+	hurt.play()
+	
 
 	await get_tree().create_timer(stun_time).timeout
 	is_stunned = false
@@ -70,6 +74,9 @@ func die():
 	is_dead = true
 	velocity = Vector2.ZERO
 	anim.play("Die")
+	hurt.pitch_scale = randf_range(0.3, 0.7)
+	hurt.play()
+	
 
 	$CollisionShape2D.disabled = true
 	detect_area.monitoring = false

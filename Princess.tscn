@@ -1,0 +1,79 @@
+[gd_scene load_steps=9 format=3 uid="uid://crxv6jywqlox6"]
+
+[ext_resource type="Script" uid="uid://r64vldqjksbi" path="res://princess.gd" id="1_yjl4w"]
+[ext_resource type="Texture2D" uid="uid://chtqidah1m203" path="res://asset/Character/Female/Idle_KG_1.png" id="2_2vwsl"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0vvu0"]
+atlas = ExtResource("2_2vwsl")
+region = Rect2(0, 0, 100, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ij6xo"]
+atlas = ExtResource("2_2vwsl")
+region = Rect2(100, 0, 100, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ats5"]
+atlas = ExtResource("2_2vwsl")
+region = Rect2(200, 0, 100, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uwejm"]
+atlas = ExtResource("2_2vwsl")
+region = Rect2(300, 0, 100, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_72pxs"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0vvu0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ij6xo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1ats5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uwejm")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nt6w3"]
+radius = 17.0
+height = 78.0
+
+[node name="Princess" type="Area2D"]
+collision_layer = 8
+collision_mask = 2
+script = ExtResource("1_yjl4w")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(59, 52)
+scale = Vector2(1, 1.09375)
+sprite_frames = SubResource("SpriteFrames_72pxs")
+animation = &"Idle"
+frame_progress = 0.89480424
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(59, 53)
+shape = SubResource("CapsuleShape2D_nt6w3")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -256.0
+offset_right = 256.0
+offset_bottom = 179.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 36
+text = "You saved her by never giving up"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

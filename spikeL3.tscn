@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://qh12e4v3lwy8"]
+
+[ext_resource type="Script" uid="uid://c8h44ddfxo7s8" path="res://spike.gd" id="1_wqwf7"]
+[ext_resource type="Texture2D" uid="uid://coeo060kuyd5g" path="res://asset/Background/Level3/Tilesetv3.png" id="2_wqwf7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5sso0"]
+size = Vector2(21.83908, 20)
+
+[node name="SpikeL3" type="Area2D"]
+collision_layer = 8
+collision_mask = 2
+script = ExtResource("1_wqwf7")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(9, 7.999998)
+scale = Vector2(0.87, 0.8475)
+texture = ExtResource("2_wqwf7")
+region_enabled = true
+region_rect = Rect2(64, 215, 15, 9)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(7.5, 7.999998)
+scale = Vector2(0.87, 0.8475)
+shape = SubResource("RectangleShape2D_5sso0")
+debug_color = Color(0.7874284, 0.1673325, 2.8878452e-07, 0.41960785)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
